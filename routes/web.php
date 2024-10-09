@@ -22,6 +22,10 @@ Route::get('/penerbangan', function () {
     return view('penerbangan');
 });
 
+Route::get('/pesanan', function(){
+    return view('pesanan');
+})->middleware(['auth', 'verified'])->name('pesanan');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
