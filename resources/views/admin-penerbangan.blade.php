@@ -5,14 +5,6 @@
 
     <x-dashboard.search-form />
 
-    <!-- Button to add flight -->
-    <button data-modal-toggle="defaultModal" class="text-white bg-blue-600 hover:bg-blue-700 rounded-lg px-4 py-2">Add
-        Flight
-    </button>
-
-    <x-dashboard.add-flight-modal />
-
-
     <x-dashboard.flight-table>
         @foreach ($penerbangans as $flight)
             <x-dashboard.flight-table-row :flight="$flight" />

@@ -1,11 +1,10 @@
 <tr class="border-b dark:border-gray-700">
-    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $flight->id }}
+    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $user->id }}
     </th>
-    <td class="px-6 py-4">{{ $flight->maskapai->name }}</td>
-    <td class="px-6 py-4">{{ 'Rp ' . number_format($flight->harga, 0, ',', '.') }}</td>
-    <td class="px-6 py-4">{{ $flight->kapasitas }}</td>
-    <td class="px-6 py-4">{{ $flight->jadwal_berangkat }}</td>
-    <td class="px-6 py-4">{{ $flight->jadwal_kedatangan }}</td>
+    <td class="px-6 py-4">{{ $user->name }}</td>
+    <td class="px-6 py-4">{{ $user->email }}</td>
+    <td class="px-6 py-4">{{ $user->nik }}</td>
+    <td class="px-6 py-4">{{ $user->created_at }}</td>
     <td class="px-6 py-4 flex flex-col gap-2">
         <button id="updateProductButton" data-modal-target="updateProductModal" data-modal-toggle="updateProductModal" type="button" class="text-blue-600 hover:underline">Edit</button>
         <button id="deleteButton" data-modal-target="deleteModal" data-modal-toggle="deleteModal" type="button" class="text-red-600 hover:underline">Delete</button>
