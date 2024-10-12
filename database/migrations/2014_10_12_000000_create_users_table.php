@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('nik');
             $table->enum('role', array('user', 'admin'))->default('user');
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

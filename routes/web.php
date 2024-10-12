@@ -44,6 +44,8 @@ Route::get('/admin/penerbangan', [AdminController::class, 'penerbangan'])->middl
 
 Route::get('/admin/penerbangan/{id}', [AdminController::class, 'deletePenerbangan'])->middleware(['admin'])->name('deletePenerbangan');
 
+Route::get('/admin/user/{id}', [AdminController::class, 'deleteUser'])->middleware(['admin'])->name('deleteUser');
+
 // Route::get('/admin/penerbangan/{id}', [AdminController::class, 'updatePenerbangan'])->middleware(['admin'])->name('updatePenerbangan');
 
 Route::middleware('auth')->group(function () {

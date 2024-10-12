@@ -25,6 +25,12 @@ class AdminController extends Controller
         return view('admin-user', ['users' => $users, 'search' => $search]);
     }
 
+    public function deleteUser($id)
+    {
+        User::destroy($id);
+        return redirect()->back()->with('success', 'User deleted successfully.');
+    }
+
     public function penerbangan(Request $request)
     {
         $search = $request->query('search');
@@ -58,7 +64,7 @@ class AdminController extends Controller
 
     public function deletePenerbangan($id)
     {
-        Penerbangan::destroy($id); 
+        Penerbangan::destroy($id);
         return redirect()->back()->with('success', 'Penerbangan deleted successfully.');
     }
 
@@ -78,5 +84,4 @@ class AdminController extends Controller
 
         return redirect()->route('penerbangan.index')->with('success', 'Penerbangan updated successfully.');
     }
-    
 }

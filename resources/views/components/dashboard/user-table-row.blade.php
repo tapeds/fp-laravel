@@ -89,7 +89,7 @@
 
 <div id="deleteModal-{{ $user->id }}" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
-    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+    <div class="relative p-6 w-full max-w-md h-full md:h-auto">
         <div class="relative p-4 text-center bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
             <button type="button"
                 class="text-gray-400 absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -104,14 +104,18 @@
             </button>
             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete user
                 id: {{ $user->id }}?</h3>
-            <button data-modal-toggle="deleteModal-{{ $user->id }}" type="button"
-                class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-800">
-                Yes, I'm sure
-            </button>
-            <button data-modal-toggle="deleteModal-{{ $user->id }}" type="button"
-                class="text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
-                No, cancel
-            </button>
+            <div class="flex justify-center gap-5">
+                <button data-modal-toggle="deleteModal-{{ $user->id }}" type="button"
+                    class="text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
+                    No, cancel
+                </button>
+                <form action="{{ route('deleteUser', $user->id) }}" method="DELETE" @csrf <button
+                    data-modal-toggle="deleteModal-{{ $user->id }}" type="submit"
+                    class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-800">
+                    Yes, I'm sure
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
