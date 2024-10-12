@@ -15,14 +15,21 @@ class Penerbangan extends Model
         'kota',
     ];
 
-    public function bandaras(){
+    public function tikets()
+    {
+        return $this->hasMany(Tiket::class, 'penerbangan_id');
+    }
+
+    public function bandaras()
+    {
         return $this->belongsToMany(Bandara::class, 'bandara_penerbangans', 'penerbangan_id', 'bandara_id')->withTimestamps()->withPivot([
             'tx_id',
             'tx_arah'
         ]);
     }
 
-    public function maskapai() {
+    public function maskapai()
+    {
         return $this->belongsTo(Maskapai::class, 'maskapai_id');
     }
 

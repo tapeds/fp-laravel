@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
             MaskapaiSeeder::class,
             BandaraSeeder::class,
             PenerbanganSeeder::class,
-            PenerbanganBandaraSeeder::class
+            PenerbanganBandaraSeeder::class,
+            UserSeeder::class,
+            TiketSeeder::class
         ]);
     }
 }

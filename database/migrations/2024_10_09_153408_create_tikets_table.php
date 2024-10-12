@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('tikets', function (Blueprint $table) {
             $table->id();
-            $table->string('no_kursi');
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('penerbangan_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::create('passengers', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('tiket_id')->constrained('tikets')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('name')->nullable();
+            $table->string('nik')->nullable();
             $table->timestamps();
         });
     }
@@ -26,5 +33,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('tiket');
+        Schema::dropIfExists('passengers');
     }
 };
