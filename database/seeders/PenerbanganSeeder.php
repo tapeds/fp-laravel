@@ -13,6 +13,6 @@ class PenerbanganSeeder extends Seeder
      */
     public function run(): void
     {
-        Penerbangan::factory(100)->create();
+        Penerbangan::factory(1000)->create();
     }
 }

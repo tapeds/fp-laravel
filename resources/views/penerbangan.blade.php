@@ -55,36 +55,41 @@
                 </form>
                 <div class="mx-auto w-full flex-none lg:max-w-xl xl:max-w-3xl">
                     <div class="space-y-6">
-                        @foreach ($daftar_penerbangan as $penerbangan)
-                            @php
-                                $bandaraPenerbanganBerangkat = '';
-                                $bandaraPenerbanganKedatangan = '';
+@if ($daftar_penerbangan->isEmpty())
+    <div class="flex items-center justify-center max-lg:py-20">
+        Tidak ada penerbangan yang tersedia.
+    </div>
+@else
+    @foreach ($daftar_penerbangan as $penerbangan)
+        @php
+            $bandaraPenerbanganBerangkat = '';
+            $bandaraPenerbanganKedatangan = '';
 
-                                if ($penerbangan->bandaraPenerbangans->first()->tx_arah == 'berangkat') {
-                                    $bandaraPenerbanganBerangkat = $penerbangan->bandaraPenerbangans->get(0);
-                                    $bandaraPenerbanganKedatangan = $penerbangan->bandaraPenerbangans->get(1);
-                                } else {
-                                    $bandaraPenerbanganKedatangan = $penerbangan->bandaraPenerbangans->get(1);
-                                    $bandaraPenerbanganBerangkat = $penerbangan->bandaraPenerbangans->get(0);
-                                }
+            if ($penerbangan->bandaraPenerbangans->first()->tx_arah == 'berangkat') {
+                $bandaraPenerbanganBerangkat = $penerbangan->bandaraPenerbangans->get(0);
+                $bandaraPenerbanganKedatangan = $penerbangan->bandaraPenerbangans->get(1);
+            } else {
+                $bandaraPenerbanganKedatangan = $penerbangan->bandaraPenerbangans->get(1);
+                $bandaraPenerbanganBerangkat = $penerbangan->bandaraPenerbangans->get(0);
+            }
 
-                                $bandaraBerangkat = '';
-                                $bandaraKedatangan = '';
+            $bandaraBerangkat = '';
+            $bandaraKedatangan = '';
 
-                                if ($bandaraPenerbanganBerangkat->tx_arah == 'berangkat') {
-                                    $bandaraBerangkat = $penerbangan->bandaras->get(0);
-                                    $bandaraKedatangan = $penerbangan->bandaras->get(1);
-                                } else {
-                                    $bandaraBerangkat = $penerbangan->bandaras->get(1);
-                                    $bandaraKedatangan = $penerbangan->bandaras->get(0);
-                                }
-                            @endphp
+            if ($bandaraPenerbanganBerangkat->tx_arah == 'berangkat') {
+                $bandaraBerangkat = $penerbangan->bandaras->get(0);
+                $bandaraKedatangan = $penerbangan->bandaras->get(1);
+            } else {
+                $bandaraBerangkat = $penerbangan->bandaras->get(1);
+                $bandaraKedatangan = $penerbangan->bandaras->get(0);
+            }
+        @endphp
 
-                            <x-penerbangan.card :jadwalKedatangan="$penerbangan->jadwal_kedatangan" :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas" :jadwalBerangkat="$penerbangan->jadwal_berangkat"
-                                :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :namaBandaraKedatangan="$bandaraKedatangan->name"
-                                :kotaBandaraKedatangan="$bandaraKedatangan->kota" :namaBandaraKeberangkatan="$bandaraBerangkat->name" :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
-                        @endforeach
-
+        <x-penerbangan.card :jadwalKedatangan="$penerbangan->jadwal_kedatangan" :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas" :jadwalBerangkat="$penerbangan->jadwal_berangkat"
+            :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :kodeBandaraKedatangan="$bandaraKedatangan->kode"
+            :kotaBandaraKedatangan="$bandaraKedatangan->kota" :kodeBandaraKeberangkatan="$bandaraBerangkat->kode" :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
+    @endforeach
+@endif
                     </div>
                 </div>
             </div>
@@ -96,8 +101,6 @@
         const tujuanSelect = document.getElementById('kedatangan');
         const tanggalInput = document.getElementById('tanggal');
         const airlineCheckboxes = document.querySelectorAll('input[type="checkbox"]');
-
-        console.log(tanggalInput, asalSelect.value)
 
         function updateTujuanOptions() {
             const asalValue = asalSelect.value;
@@ -148,6 +151,7 @@
 
         window.addEventListener("load", function() {
             const datepickerInput = document.getElementById('tanggal');
+
             datepickerInput.value = "{{ $tanggal_perjalanan }}";
         });
     </script>
