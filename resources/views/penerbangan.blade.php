@@ -3,80 +3,48 @@
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
             <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Daftar Penerbangan</h2>
 
-            <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
-                <div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
-                    <div
-                        class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-                        <p class="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
-
-                        <div class="space-y-4">
-                            <div class="space-y-2">
-                                <dl class="flex items-center justify-between gap-4">
-                                    <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Original price
-                                    </dt>
-                                    <dd class="text-base font-medium text-gray-900 dark:text-white">$7,592.00</dd>
-                                </dl>
-
-                                <dl class="flex items-center justify-between gap-4">
-                                    <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Savings</dt>
-                                    <dd class="text-base font-medium text-green-600">-$299.00</dd>
-                                </dl>
-
-                                <dl class="flex items-center justify-between gap-4">
-                                    <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Store Pickup
-                                    </dt>
-                                    <dd class="text-base font-medium text-gray-900 dark:text-white">$99</dd>
-                                </dl>
-
-                                <dl class="flex items-center justify-between gap-4">
-                                    <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
-                                    <dd class="text-base font-medium text-gray-900 dark:text-white">$799</dd>
-                                </dl>
-                            </div>
-
-                            <dl
-                                class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-                                <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                <dd class="text-base font-bold text-gray-900 dark:text-white">$8,191.00</dd>
-                            </dl>
+            <div class="mt-6 sm:mt-8 md:gap-6 flex flex-col gap-5 lg:flex-row lg:items-start xl:gap-8">
+                <form id="searchForm">
+                    @csrf
+                    <div class="flex flex-col gap-2">
+                        <div class="flex flex-col gap-0.5 w-full items-start">
+                            <label for="berangkat" class="block text-sm font-medium text-gray-900 dark:text-white">Asal</label>
+                            <select id="berangkat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected disabled>Pilih Asal</option>
+                                <option value="CGK" {{ $asal === 'CGK' ? 'selected' : '' }}>Jakarta</option>
+                                <option value="SUB" {{ $asal === 'SUB' ? 'selected' : '' }}>Surabaya</option>
+                                <option value="DPS" {{ $asal === 'DPS' ? 'selected' : '' }}>Bali</option>
+                                <option value="BTH" {{ $asal === 'BTH' ? 'selected' : '' }}>Batam</option>
+                            </select>
                         </div>
-
-                        <a href="#"
-                            class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed
-                            to Checkout</a>
-
-                        <div class="flex items-center justify-center gap-2">
-                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
-                            <a href="#" title=""
-                                class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
-                                Continue Shopping
-                                <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
-                                </svg>
-                            </a>
+                        <div class="flex flex-col gap-0.5 w-full items-start">
+                            <label for="kedatangan" class="block text-sm font-medium text-gray-900 dark:text-white">Tujuan</label>
+                            <select id="kedatangan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected disabled>Pilih Tujuan</option>
+                                <option value="CGK" {{ $tujuan === 'CGK' ? 'selected' : '' }}>Jakarta</option>
+                                <option value="SUB" {{ $tujuan === 'SUB' ? 'selected' : '' }}>Surabaya</option>
+                                <option value="DPS" {{ $tujuan === 'DPS' ? 'selected' : '' }}>Bali</option>
+                                <option value="BTH" {{ $tujuan === 'BTH' ? 'selected' : '' }}>Batam</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-0.5 w-full items-start">
+                            <label for="tanggal" class="block text-sm font-medium text-gray-900 dark:text-white">Tanggal Perjalanan</label>
+                            <div class="relative w-full">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                    </svg>
+                                </div>
+                                <input datepicker id="tanggal" type="text"
+                                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       placeholder="Select date">
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <x-penerbangan.filter :maskapai="$maskapai"></x-penerbangan.filter>
                         </div>
                     </div>
-
-                    <div
-                        class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
-                        <form class="space-y-4">
-                            <div>
-                                <label for="voucher"
-                                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Do you have a
-                                    voucher or gift card? </label>
-                                <input type="text" id="voucher"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                    placeholder="" required />
-                            </div>
-                            <button type="submit"
-                                class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Apply
-                                Code</button>
-                        </form>
-                    </div>
-                </div>
-
+                </form>
                 <div class="mx-auto w-full flex-none lg:max-w-xl xl:max-w-3xl">
                     <div class="space-y-6">
                         {{-- <x-penerbangan.card :penerbangan="$penerbangan"></x-penerbangan.card> --}}
@@ -87,9 +55,66 @@
                         @endforeach
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
+
+<script>
+    const asalSelect = document.getElementById('berangkat');
+    const tujuanSelect = document.getElementById('kedatangan');
+    const tanggalInput = document.getElementById('tanggal');
+    const airlineCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    function updateTujuanOptions() {
+        const asalValue = asalSelect.value;
+
+        Array.from(tujuanSelect.options).forEach(option => {
+            option.disabled = (option.value === asalValue);
+        });
+    }
+
+    function checkAndRedirect() {
+        const asal = asalSelect.value;
+        const tujuan = tujuanSelect.value;
+        const tanggalPerjalanan = tanggalInput.value;
+
+        const selectedAirlines = Array.from(airlineCheckboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.id);
+
+        if (asal && tujuan && tanggalPerjalanan) {
+            const queryParams = new URLSearchParams({
+                asal: asal,
+                tujuan: tujuan,
+                tanggal_perjalanan: tanggalPerjalanan,
+                maskapai: selectedAirlines
+            });
+
+            window.location.href = `/penerbangan?${queryParams.toString()}`;
+        }
+    }
+
+    asalSelect.addEventListener('change', function() {
+        updateTujuanOptions();
+        checkAndRedirect();
+    });
+
+    tujuanSelect.addEventListener('change', function() {
+        Array.from(asalSelect.options).forEach(option => {
+            option.disabled = (option.value === tujuanSelect.value);
+        });
+        checkAndRedirect();
+    });
+
+    tanggalInput.addEventListener('change', checkAndRedirect);
+
+    airlineCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', checkAndRedirect);
+    });
+
+    window.addEventListener("load", function() {
+        const datepickerInput = document.getElementById("tanggal");
+        datepickerInput.value = "{{ $tanggal_perjalanan }}";
+    });
+</script>
 </x-app-layout>
