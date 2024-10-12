@@ -85,7 +85,7 @@
             }
         @endphp
 
-        <x-penerbangan.card :jadwalKedatangan="$penerbangan->jadwal_kedatangan" :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas" :jadwalBerangkat="$penerbangan->jadwal_berangkat"
+        <x-penerbangan.card href="{{ route('checkout', ['penerbangan_id' => $penerbangan->id]) }}" :jadwalKedatangan="$penerbangan->jadwal_kedatangan" :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas" :jadwalBerangkat="$penerbangan->jadwal_berangkat"
             :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :kodeBandaraKedatangan="$bandaraKedatangan->kode"
             :kotaBandaraKedatangan="$bandaraKedatangan->kota" :kodeBandaraKeberangkatan="$bandaraBerangkat->kode" :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
     @endforeach
