@@ -35,7 +35,7 @@
                                         <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                     </svg>
                                 </div>
-                                <input datepicker id="tanggal" type="text"
+                                <input id="tanggal" type="date"
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="Select date">
                             </div>
@@ -46,14 +46,26 @@
                     </div>
                 </form>
                 <div class="mx-auto w-full flex-none lg:max-w-xl xl:max-w-3xl">
-                    <div class="space-y-6">
-                        {{-- <x-penerbangan.card :penerbangan="$penerbangan"></x-penerbangan.card> --}}
-                        @foreach ($daftar_penerbangan as $penerbangan)
-                            <x-penerbangan.card :maskapaiName="$penerbangan->maskapai->name" :jadwalBerangkat="$penerbangan->jadwal_berangkat" :jadwalKedatangan="$penerbangan->jadwal_kedatangan" :harga="$penerbangan->harga"
-                                :kapasitas="$penerbangan->kapasitas" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :bandaraName="$penerbangan->bandaras->first()->name"
-                                :bandaraKode="$penerbangan->bandaras->first()->kode" :bandaraKota="$penerbangan->bandaras->first()->kota" />
-                        @endforeach
-                    </div>
+<div class="space-y-6">
+    @if ($daftar_penerbangan->isEmpty())
+        <p class="text-center text-gray-600">Tidak ada penerbangan yang tersedia.</p>
+    @else
+        @foreach ($daftar_penerbangan as $penerbangan)
+            <x-penerbangan.card
+                :maskapaiName="$penerbangan->maskapai->name"
+                :jadwalBerangkat="$penerbangan->jadwal_berangkat"
+                :jadwalKedatangan="$penerbangan->jadwal_kedatangan"
+                :harga="$penerbangan->harga"
+                :kapasitas="$penerbangan->kapasitas"
+                :maskapaiImg="$penerbangan->maskapai->img"
+                :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah"
+                :bandaraName="$penerbangan->bandaras->first()->name"
+                :bandaraKode="$penerbangan->bandaras->first()->kode"
+                :bandaraKota="$penerbangan->bandaras->first()->kota"
+            />
+        @endforeach
+    @endif
+</div>
                 </div>
             </div>
         </div>
@@ -64,6 +76,8 @@
     const tujuanSelect = document.getElementById('kedatangan');
     const tanggalInput = document.getElementById('tanggal');
     const airlineCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    console.log(tanggalInput, asalSelect.value)
 
     function updateTujuanOptions() {
         const asalValue = asalSelect.value;
@@ -113,7 +127,7 @@
     });
 
     window.addEventListener("load", function() {
-        const datepickerInput = document.getElementById("tanggal");
+        const datepickerInput = document.getElementById('tanggal');
         datepickerInput.value = "{{ $tanggal_perjalanan }}";
     });
 </script>
