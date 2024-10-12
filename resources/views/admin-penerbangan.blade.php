@@ -14,6 +14,17 @@
     <x-dashboard.pagination>
         {{ $penerbangans->links() }}
     </x-dashboard.pagination>
+
+    <form action="{{ route('deletePenerbangan', 1) }}" method="GET"
+        onsubmit="return confirm('Are you sure you want to delete this flight?');">
+        @csrf
+        <button type="submit"
+            class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5">
+            Delete Flight
+        </button>
+    </form>
+
+
 </x-app-layout>
 
 <script>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->integer('kapasitas');
             $table->foreignId('maskapai_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

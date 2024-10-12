@@ -42,6 +42,10 @@ Route::get('/admin/tiket', [AdminController::class, 'tiket'])->middleware(['admi
 
 Route::get('/admin/penerbangan', [AdminController::class, 'penerbangan'])->middleware(['admin'])->name('penerbangan');
 
+Route::get('/admin/penerbangan/{id}', [AdminController::class, 'deletePenerbangan'])->middleware(['admin'])->name('deletePenerbangan');
+
+// Route::get('/admin/penerbangan/{id}', [AdminController::class, 'updatePenerbangan'])->middleware(['admin'])->name('updatePenerbangan');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
