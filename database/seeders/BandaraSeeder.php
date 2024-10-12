@@ -16,8 +16,8 @@ class BandaraSeeder extends Seeder
         Bandara::Create([
             "name" => "Juanda Airport",
             "kode" => "SUB",
-            "kota" => "surabaya"
-        ]); 
+            "kota" => "Surabaya"
+        ]);
         Bandara::Create([
             "name" => "Soekarno Hatta Airport",
             "kode" => "CGK",

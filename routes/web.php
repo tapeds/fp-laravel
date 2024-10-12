@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PenerbanganController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,17 +19,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/penerbangan', function () {
-    return view('penerbangan');
-});
+Route::get('/penerbangan', [PenerbanganController::class, 'search']);
 
-Route::get('/pesanan', function(){
+Route::get('/pesanan', function () {
     return view('pesanan');
 })->middleware(['auth', 'verified'])->name('pesanan');
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,4 +31,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -20,7 +20,10 @@ class PenerbanganBandaraSeeder extends Seeder
         foreach ($penerbangans as $penerbangan) {
             $selectedBandaras = $bandaras->random(2);
 
-            $penerbangan->bandaras()->attach($selectedBandaras->pluck('id')->toArray());
+            $penerbangan->bandaras()->attach([
+                $selectedBandaras[0]->id => ['tx-arah' => 'berangkat'],
+                $selectedBandaras[1]->id => ['tx-arah' => 'kedatangan']
+            ]);
         }
     }
 }
