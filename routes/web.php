@@ -42,13 +42,15 @@ Route::get('/admin/tiket', [AdminController::class, 'tiket'])->middleware(['admi
 
 Route::get('/admin/penerbangan', [AdminController::class, 'penerbangan'])->middleware(['admin'])->name('penerbangan');
 
+Route::post('/admin/penerbangan/add', [AdminController::class, 'addPenerbanganAdmin'])->middleware(['admin'])->name('addPenerbanganAdmin');
+
 Route::get('/admin/penerbangan/delete/{id}', [AdminController::class, 'deletePenerbangan'])->middleware(['admin'])->name('deletePenerbangan');
 
 Route::get('/admin/user/{id}', [AdminController::class, 'deleteUser'])->middleware(['admin'])->name('deleteUser');
 
 Route::get('/admin/penerbangan/edit/{id}', [AdminController::class, 'updatePenerbangan'])->middleware(['admin'])->name('updatePenerbangan');
 
-Route::get('/admin/user/edit/{id}', [AdminController::class, 'updateUser'])->middleware(['admin'])->name('updateUser');
+Route::get('/admin/user/edit/{id}', [AdminController::class, 'updateUserAdmin'])->middleware(['admin'])->name('updateUserAdmin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

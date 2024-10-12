@@ -12,9 +12,15 @@ class Penerbangan extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name',
+        'no',
         'kode',
         'kota',
+        'no_penerbangan',
+        'jadwal_berangkat',
+        'jadwal_kedatangan',
+        'harga',
+        'kapasitas',
+        'maskapai_id',
     ];
 
     public function tikets()

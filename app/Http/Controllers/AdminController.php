@@ -43,24 +43,34 @@ class AdminController extends Controller
         return view('admin-penerbangan', ['penerbangans' => $penerbangans, 'search' => $search]);
     }
 
-    public function store(Request $request)
+    public function addPenerbanganAdmin(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'no_penerbangan' => 'required|string|max:255',
             'jadwal_berangkat' => 'required|date',
             'jadwal_kedatangan' => 'required|date|after:jadwal_berangkat',
             'harga' => 'required|integer',
             'kapasitas' => 'required|integer',
-            'maskapai_id' => 'required|exists:maskapis,id', // Make sure the maskapai exists
+            'maskapai_id' => 'required', // Make sure the maskapai exists
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        Penerbangan::create($request->all());
+        // dd($request->no_penerbangan);
 
-        return redirect()->route('penerbangans.index')->with('success', 'Penerbangan created successfully.');
+        Penerbangan::create([
+            'no_penerbangan' => "de123",
+            'jadwal_berangkat' => $request->jadwal_berangkat,
+            'jadwal_kedatangan' => $request->jadwal_kedatangan,
+            'harga' => $request->harga,
+            'kapasitas' => $request->kapasitas,
+            'maskapai_id' => $request->maskapai_id,
+        ]);
+
+        return redirect()->to('/admin/penerbangan')->with('success', 'Penerbangan created successfully.');
     }
 
     public function deletePenerbangan($id)
