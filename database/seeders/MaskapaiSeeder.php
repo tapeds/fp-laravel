@@ -23,7 +23,7 @@ class MaskapaiSeeder extends Seeder
         ]);
         Maskapai::create([
             'name' => 'Lion Air',
-            'img' => 'https://github.com/user-attachments/assets/1a182d9f-309b-4237-ba3a-3b2937d4e5fb)',
+            'img' => 'https://github.com/user-attachments/assets/1a182d9f-309b-4237-ba3a-3b2937d4e5fb',
         ]);
         Maskapai::create([
             'name' => 'Japan Airlines',

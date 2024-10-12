@@ -21,8 +21,8 @@ class PenerbanganBandaraSeeder extends Seeder
             $selectedBandaras = $bandaras->random(2);
 
             $penerbangan->bandaras()->attach([
-                $selectedBandaras[0]->id => ['tx-arah' => 'berangkat'],
-                $selectedBandaras[1]->id => ['tx-arah' => 'kedatangan']
+                $selectedBandaras[0]->id => ['tx_arah' => 'berangkat'],
+                $selectedBandaras[1]->id => ['tx_arah' => 'kedatangan']
             ]);
         }
     }

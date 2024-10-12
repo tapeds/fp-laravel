@@ -79,8 +79,11 @@
 
                 <div class="mx-auto w-full flex-none lg:max-w-xl xl:max-w-3xl">
                     <div class="space-y-6">
-                        @foreach($daftar_penerbangan as $penerbangan)
-                        <x-penerbangan.card :penerbangan="$penerbangan"></x-penerbangan.card>
+                        {{-- <x-penerbangan.card :penerbangan="$penerbangan"></x-penerbangan.card> --}}
+                        @foreach ($daftar_penerbangan as $penerbangan)
+                            <x-penerbangan.card :maskapaiName="$penerbangan->maskapai->name" :jadwalBerangkat="$penerbangan->jadwal_berangkat" :jadwalKedatangan="$penerbangan->jadwal_kedatangan" :harga="$penerbangan->harga"
+                                :kapasitas="$penerbangan->kapasitas" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :bandaraName="$penerbangan->bandaras->first()->name"
+                                :bandaraKode="$penerbangan->bandaras->first()->kode" :bandaraKota="$penerbangan->bandaras->first()->kota" />
                         @endforeach
                     </div>
                 </div>

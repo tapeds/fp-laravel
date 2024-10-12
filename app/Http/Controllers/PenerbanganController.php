@@ -14,18 +14,22 @@ class PenerbanganController extends Controller
         $tujuan = $request->query('tujuan', 'SUB');
         $tanggal_perjalanan = $request->query('tanggal_perjalanan', Carbon::now()->format('m/d/Y'));
         $date = Carbon::createFromFormat('m/d/Y', $tanggal_perjalanan)->format('Y-m-d');
-
-        $flights = Penerbangan::whereHas('bandaras', function ($query) use ($asal, $tujuan) {
-            $query->where(function ($q) use ($asal) {
-                $q->where('bandaras.kode', $asal)
-                    ->where('bandara_penerbangans.tx-arah', 'berangkat');
-            })->orWhere(function ($q) use ($tujuan) {
-                $q->where('bandaras.kode', $tujuan)
-                    ->where('bandara_penerbangans.tx-arah', 'kedatangan');
-            });
-        })->whereDate('jadwal_berangkat', $date)
+    
+        $flights = Penerbangan::with(['maskapai', 'bandaraPenerbangans', 'bandaras']) // Eager load relationships
+            ->whereHas('bandaras', function ($query) use ($asal, $tujuan) {
+                $query->where(function ($q) use ($asal) {
+                    $q->where('bandaras.kode', $asal)
+                        ->where('bandara_penerbangans.tx_arah', 'berangkat');
+                })->orWhere(function ($q) use ($tujuan) {
+                    $q->where('bandaras.kode', $tujuan)
+                        ->where('bandara_penerbangans.tx_arah', 'kedatangan');
+                });
+            })
+            ->whereDate('jadwal_berangkat', $date)
             ->get();
-
+    
         return view('penerbangan', ['daftar_penerbangan' => $flights]);
     }
+    
+    
 }

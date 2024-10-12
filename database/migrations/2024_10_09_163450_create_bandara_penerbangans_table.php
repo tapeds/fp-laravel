@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign("bandara_id")->references("id")->on("bandaras");
 
             $table->bigInteger("tx_id")->unsigned()->index()->nullable(false)->default('10');
-            $table->enum("tx-arah", array('berangkat', 'kedatangan'))->nullable(false);
+            $table->enum("tx_arah", array('berangkat', 'kedatangan'))->nullable(false);
         });
     }
 
