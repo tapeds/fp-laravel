@@ -27,5 +27,13 @@ class UserSeeder extends Seeder
             'password' => 'testing123',
             'nik' => '1234567890123456'
         ]);
+        User::create([
+            'id' => 3,
+            'name' => 'admin account',
+            'email' => 'admin@gmail.com',
+            'password' => 'admin123',
+            'nik' => '1234567890123456',
+            'role' => 'admin'
+        ]);
     }
 }

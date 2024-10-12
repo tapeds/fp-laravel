@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PenerbanganController;
 use App\Http\Controllers\PesananController;
@@ -32,6 +33,14 @@ Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.s
 Route::get('/pesanan', [PesananController::class, 'pesanan'])->middleware(['auth', 'verified'])->name('pesanan');
 
 Route::get('/pesanan/{id}', [PesananController::class, 'detail'])->middleware(['auth', 'verified'])->name('pesanan');
+
+Route::get('/admin', [AdminController::class, 'home'])->middleware(['admin'])->name('home');
+
+Route::get('/admin/user', [AdminController::class, 'user'])->middleware(['admin'])->name('user');
+
+Route::get('/admin/tiket', [AdminController::class, 'tiket'])->middleware(['admin'])->name('tiket');
+
+Route::get('/admin/penerbangan', [AdminController::class, 'penerbangan'])->middleware(['admin'])->name('penerbangan');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
