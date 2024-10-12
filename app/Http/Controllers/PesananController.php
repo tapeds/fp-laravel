@@ -29,8 +29,13 @@ class PesananController extends Controller
     {
         $user_id = Auth::id();
 
-        $pesanan = Tiket::with(['passengers', 'penerbangan.maskapai', 'penerbangan.bandaraPenerbangans', 'penerbangan.bandaras'])
-            ->where('id', $id)
+        $pesanan = Tiket::with([
+            'passengers',
+            'penerbangan.maskapai',
+            'penerbangan.bandaraPenerbangans',
+            'penerbangan.bandaras'
+        ])
+            ->where('penerbangan_id', $id)
             ->where('user_id', $user_id)
             ->first();
 

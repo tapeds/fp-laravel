@@ -13,7 +13,6 @@
                         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                         <x-nav-link href="/penerbangan" :active="request()->is('penerbangan')">Penerbangan</x-nav-link>
                         <x-nav-link href="/pesanan" :active="request()->is('pesanan')">Pesanan</x-nav-link>
-                        <x-nav-link href="/checkout" :active="request()->is('checkout')">Checkout</x-nav-link>
                     </div>
                 </div>
             </div>

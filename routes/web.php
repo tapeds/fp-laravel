@@ -26,7 +26,7 @@ Route::get('/penerbangan', [PenerbanganController::class, 'search']);
 
 Route::get('/checkout', [CheckoutController::class, 'notFound']);
 
-Route::get('/checkout/{id}', [CheckoutController::class, 'view'])->name('checkout');
+Route::get('/checkout/{id}', [CheckoutController::class, 'view'])->middleware(['auth', 'verified'])->name('checkout');
 
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 
