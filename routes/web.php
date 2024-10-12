@@ -48,6 +48,8 @@ Route::get('/admin/user/{id}', [AdminController::class, 'deleteUser'])->middlewa
 
 Route::get('/admin/penerbangan/edit/{id}', [AdminController::class, 'updatePenerbangan'])->middleware(['admin'])->name('updatePenerbangan');
 
+Route::get('/admin/user/edit/{id}', [AdminController::class, 'updateUser'])->middleware(['admin'])->name('updateUser');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

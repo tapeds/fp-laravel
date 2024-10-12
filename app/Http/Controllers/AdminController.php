@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Maskapai;
 use App\Models\User;
 use App\Models\Penerbangan;
+use Attribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -71,30 +72,27 @@ class AdminController extends Controller
     public function updatePenerbangan(Request $request, $id)
     {
         $request->validate([
-            'name' => 'string|max:255',
             'harga' => 'integer|min:0',
             'kapasitas' => 'integer|min:0',
             'jadwal_berangkat' => 'date',
             'jadwal_kedatangan' => 'date|after:jadwal_berangkat',
         ]);
 
-        $penerbangan = Penerbangan::findOrFail($id);
-
-        $penerbangan->update([
-            'harga' =>$request->harga,
-            'kapasitas' => 11,
-            'jadwal_berangkat' => $request->jadwal_berangkat,
-            'jadwal_kedatangan' => $request->jadwal_kedatangan,
-        ]);
-
-        $maskapaiID =  $penerbangan->maskapai_id;
-
-        $maskapai = Maskapai::findOrFail($maskapaiID);
-
-        $maskapai->update([
-            'name' => $request->name,
-        ]);
+        Penerbangan::where('id', $id)->update(['harga' => $request->harga, 'kapasitas' => $request->kapasitas, 'jadwal_berangkat' => $request->jadwal_berangkat, 'jadwal_kedatangan' => $request->jadwal_kedatangan]);
 
         return redirect()->to('/admin/penerbangan');
+    }
+
+    public function updateUser(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'string|min:1',
+            'email' => 'string|email|max:255',
+            'nik' => 'string|min:16|max:16',
+        ]);
+
+        User::where('id', $id)->update(['name' => $request->nama, 'email' => $request->email, 'nik' => $request->nik]);
+
+        return redirect()->to('/admin/user');
     }
 }
