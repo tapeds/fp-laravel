@@ -40,55 +40,53 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="#">
+            <form action="{{ route('updatePenerbangan', $flight->id) }}" method="PUT"> @csrf
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
-                        <label for="name-{{ $flight->id }}"
+                        <label for="name"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                        <input type="text" name="name" id="name-{{ $flight->id }}"
-                            value="{{ $flight->maskapai->name }}"
+                        <input type="text" name="name" id="name" value="{{ $flight->maskapai->name }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
                     <div>
-                        <label for="price-{{ $flight->id }}"
+                        <label for="harga"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                        <input type="number" value="{{ $flight->harga }}" name="price"
-                            id="price-{{ $flight->id }}"
+                        <input type="number" value="{{ $flight->harga }}" name="harga" id="harga"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
                     <div>
-                        <label for="kapasitas-{{ $flight->id }}"
+                        <label for="kapasitas"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kapasitas</label>
-                        <input type="number" value="{{ $flight->kapasitas }}" name="kapasitas"
-                            id="kapasitas-{{ $flight->id }}"
+                        <input type="number" value="{{ $flight->kapasitas }}" name="kapasitas" id="kapasitas"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
                     <div>
-                        <label for="jadwal_berangkat-{{ $flight->id }}"
+                        <label for="jadwal_berangkat"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jadwal
                             Berangkat</label>
                         <input type="datetime-local" value="{{ $flight->jadwal_berangkat }}" name="jadwal_berangkat"
-                            id="jadwal_berangkat-{{ $flight->id }}"
+                            id="jadwal_berangkat"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
                     <div>
-                        <label for="jadwal_kedatangan-{{ $flight->id }}"
+                        <label for="jadwal_kedatangan"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jadwal
                             Kedatangan</label>
                         <input type="datetime-local" value="{{ $flight->jadwal_kedatangan }}" name="jadwal_kedatangan"
-                            id="jadwal_kedatangan-{{ $flight->id }}"
+                            id="jadwal_kedatangan"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button type="submit"
-                        class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                        Update Flight
-                    </button>
-                </div>
+                    <div class="flex items-center space-x-4">
+                        <button type="submit"
+                            class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                            Update Flight
+                        </button>
+                    </div>
             </form>
         </div>
+
     </div>
+</div>
 </div>
 
 <!-- Delete Modal -->

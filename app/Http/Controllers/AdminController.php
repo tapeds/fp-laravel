@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Maskapai;
 use App\Models\User;
 use App\Models\Penerbangan;
 use Illuminate\Http\Request;
@@ -56,7 +57,6 @@ class AdminController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // Create a new penerbangan
         Penerbangan::create($request->all());
 
         return redirect()->route('penerbangans.index')->with('success', 'Penerbangan created successfully.');
@@ -71,17 +71,30 @@ class AdminController extends Controller
     public function updatePenerbangan(Request $request, $id)
     {
         $request->validate([
-            'no_penerbangan' => 'string|max:255',
-            'jadwal_berangkat' => 'date',
-            'jadwal_kedatangan' => 'date|after:jadwal_berangkat',
+            'name' => 'string|max:255',
             'harga' => 'integer|min:0',
             'kapasitas' => 'integer|min:0',
+            'jadwal_berangkat' => 'date',
+            'jadwal_kedatangan' => 'date|after:jadwal_berangkat',
         ]);
 
         $penerbangan = Penerbangan::findOrFail($id);
 
-        $penerbangan->update($request->all());
+        $penerbangan->update([
+            'harga' =>$request->harga,
+            'kapasitas' => 11,
+            'jadwal_berangkat' => $request->jadwal_berangkat,
+            'jadwal_kedatangan' => $request->jadwal_kedatangan,
+        ]);
 
-        return redirect()->route('penerbangan.index')->with('success', 'Penerbangan updated successfully.');
+        $maskapaiID =  $penerbangan->maskapai_id;
+
+        $maskapai = Maskapai::findOrFail($maskapaiID);
+
+        $maskapai->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->to('/admin/penerbangan');
     }
 }
