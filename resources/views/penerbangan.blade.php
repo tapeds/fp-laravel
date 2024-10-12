@@ -88,10 +88,16 @@
                                     }
                                 @endphp
 
-                                <x-penerbangan.card href="{{ route('checkout', ['id' => $penerbangan->id]) }}"
-                                    :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas" :jadwalBerangkat="$penerbangan->jadwal_berangkat" :jadwalKedatangan="$penerbangan->jadwal_kedatangan"
-                                    :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :kodeBandaraKedatangan="$bandaraKedatangan->kode"
-                                    :kotaBandaraKedatangan="$bandaraKedatangan->kota" :kodeBandaraKeberangkatan="$bandaraBerangkat->kode" :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
+                                @if ($penerbangan->kapasitas > 0)
+                                    <x-penerbangan.card href="{{ route('checkout', ['id' => $penerbangan->id]) }}"
+                                        :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas" :jadwalBerangkat="$penerbangan->jadwal_berangkat" :jadwalKedatangan="$penerbangan->jadwal_kedatangan"
+                                        :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :kodeBandaraKedatangan="$bandaraKedatangan->kode"
+                                        :kotaBandaraKedatangan="$bandaraKedatangan->kota" :kodeBandaraKeberangkatan="$bandaraBerangkat->kode" :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
+                                @else
+                                    <x-penerbangan.card-disabled :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas" :jadwalBerangkat="$penerbangan->jadwal_berangkat" :jadwalKedatangan="$penerbangan->jadwal_kedatangan"
+                                        :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :kodeBandaraKedatangan="$bandaraKedatangan->kode"
+                                        :kotaBandaraKedatangan="$bandaraKedatangan->kota" :kodeBandaraKeberangkatan="$bandaraBerangkat->kode" :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
+                                @endif
                             @endforeach
                         @endif
                     </div>

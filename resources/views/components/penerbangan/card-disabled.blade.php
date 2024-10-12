@@ -2,15 +2,15 @@
     use Carbon\Carbon;
 @endphp
 
-<a href="{{ $href }}" disabled class="block rounded-lg border hover:ring-blue-400 hover:ring-2 hover:cursor-pointer border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+<div class="block rounded-lg border hover:cursor-not-allowed  border-gray-200 p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6 bg-gray-200">
     <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
         <div class="flex flex-col items-center justify-center">
             <img class="size-16 object-contain" src="{{ $maskapaiImg }}" alt="{{ $maskapaiName }} image" />
         </div>
         <div class="flex items-center justify-center md:order-3 md:justify-end">
             <div class="text-end md:order-4 md:w-32">
-                <p class="text-base font-bold text-orange-500 dark:text-white">
-                    {{ 'Rp ' . number_format($harga, 0, ',', '.') }}
+                <p class="text-base font-bold text-red-500 dark:text-white">
+                    HABIS
                 </p>
             </div>
         </div>
@@ -52,4 +52,4 @@
             </div>
         </div>
     </div>
-</a>
+</div>
