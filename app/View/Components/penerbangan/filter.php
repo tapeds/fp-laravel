@@ -1,24 +1,20 @@
 <?php
 
-namespace App\View\Components\penerbangan;
+namespace App\View\Components\Penerbangan;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class filter extends Component
+class Filter extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public string $maskapai;
+
+    public function __construct(string $maskapai)
     {
-        //
+        $this->maskapai = $maskapai;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
     public function render(): View|Closure|string
     {
         return view('components.penerbangan.filter');

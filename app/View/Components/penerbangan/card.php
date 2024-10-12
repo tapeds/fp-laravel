@@ -8,6 +8,7 @@ use Illuminate\View\Component;
 
 class Card extends Component
 {   
+    public string $href;
     // table penerbangan
     public string $jadwalBerangkat;
     public string $jadwalKedatangan;
@@ -22,29 +23,32 @@ class Card extends Component
     public string $arah;
 
     // table bandara
-    public string $namaBandaraKedatangan;
+    public string $kodeBandaraKedatangan;
     public string $kotaBandaraKedatangan;
-    public string $namaBandaraKeberangkatan;
+    public string $kodeBandaraKeberangkatan;
     public string $kotaBandaraKeberangkatan;
     
 
 
     public function __construct(
-        string $jadwalBerangkat,
-        string $jadwalKedatangan,
+        string $href,
         int $harga,
         int $kapasitas,
+
+        string $jadwalBerangkat,
+        string $jadwalKedatangan,
 
         string $maskapaiName,
         string $maskapaiImg,
 
         string $arah,
 
-        string $namaBandaraKedatangan,
+        string $kodeBandaraKedatangan,
         string $kotaBandaraKedatangan,
-        string $namaBandaraKeberangkatan,
+        string $kodeBandaraKeberangkatan,
         string $kotaBandaraKeberangkatan
     ) {
+        $this->href = $href;
         $this->jadwalBerangkat = $jadwalBerangkat;
         $this->jadwalKedatangan = $jadwalKedatangan;
         $this->harga = $harga;
@@ -55,9 +59,9 @@ class Card extends Component
 
         $this->arah = $arah;
 
-        $this->namaBandaraKedatangan = $namaBandaraKedatangan;
+        $this->kodeBandaraKedatangan = $kodeBandaraKedatangan;
         $this->kotaBandaraKedatangan = $kotaBandaraKedatangan;
-        $this->namaBandaraKeberangkatan = $namaBandaraKeberangkatan;
+        $this->kodeBandaraKeberangkatan = $kodeBandaraKeberangkatan;
         $this->kotaBandaraKeberangkatan = $kotaBandaraKeberangkatan;
     }
 

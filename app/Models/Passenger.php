@@ -11,7 +11,7 @@ class Passenger extends Model
 
     protected $fillable = [
         'tiket_id',
-        'nama',
+        'name',
         'nik',
     ];
 

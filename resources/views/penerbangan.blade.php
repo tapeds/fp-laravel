@@ -48,48 +48,52 @@
                                     placeholder="Select date">
                             </div>
                         </div>
+                        @php
+                            $tempMaskapai = $maskapai;
+                        @endphp
                         <div class="mt-2">
-                            <x-penerbangan.filter :maskapai="$maskapai"></x-penerbangan.filter>
+                            <x-penerbangan.filter :maskapai="$tempMaskapai"></x-penerbangan.filter>
                         </div>
                     </div>
                 </form>
                 <div class="mx-auto w-full flex-none lg:max-w-xl xl:max-w-3xl">
                     <div class="space-y-6">
-@if ($daftar_penerbangan->isEmpty())
-    <div class="flex items-center justify-center max-lg:py-20">
-        Tidak ada penerbangan yang tersedia.
-    </div>
-@else
-    @foreach ($daftar_penerbangan as $penerbangan)
-        @php
-            $bandaraPenerbanganBerangkat = '';
-            $bandaraPenerbanganKedatangan = '';
+                        @if ($daftar_penerbangan->isEmpty())
+                            <div class="flex items-center justify-center max-lg:py-20">
+                                Tidak ada penerbangan yang tersedia.
+                            </div>
+                        @else
+                            @foreach ($daftar_penerbangan as $penerbangan)
+                                @php
+                                    $bandaraPenerbanganBerangkat = '';
+                                    $bandaraPenerbanganKedatangan = '';
 
-            if ($penerbangan->bandaraPenerbangans->first()->tx_arah == 'berangkat') {
-                $bandaraPenerbanganBerangkat = $penerbangan->bandaraPenerbangans->get(0);
-                $bandaraPenerbanganKedatangan = $penerbangan->bandaraPenerbangans->get(1);
-            } else {
-                $bandaraPenerbanganKedatangan = $penerbangan->bandaraPenerbangans->get(1);
-                $bandaraPenerbanganBerangkat = $penerbangan->bandaraPenerbangans->get(0);
-            }
+                                    if ($penerbangan->bandaraPenerbangans->first()->tx_arah == 'berangkat') {
+                                        $bandaraPenerbanganBerangkat = $penerbangan->bandaraPenerbangans->get(0);
+                                        $bandaraPenerbanganKedatangan = $penerbangan->bandaraPenerbangans->get(1);
+                                    } else {
+                                        $bandaraPenerbanganKedatangan = $penerbangan->bandaraPenerbangans->get(1);
+                                        $bandaraPenerbanganBerangkat = $penerbangan->bandaraPenerbangans->get(0);
+                                    }
 
-            $bandaraBerangkat = '';
-            $bandaraKedatangan = '';
+                                    $bandaraBerangkat = '';
+                                    $bandaraKedatangan = '';
 
-            if ($bandaraPenerbanganBerangkat->tx_arah == 'berangkat') {
-                $bandaraBerangkat = $penerbangan->bandaras->get(0);
-                $bandaraKedatangan = $penerbangan->bandaras->get(1);
-            } else {
-                $bandaraBerangkat = $penerbangan->bandaras->get(1);
-                $bandaraKedatangan = $penerbangan->bandaras->get(0);
-            }
-        @endphp
+                                    if ($bandaraPenerbanganBerangkat->tx_arah == 'berangkat') {
+                                        $bandaraBerangkat = $penerbangan->bandaras->get(0);
+                                        $bandaraKedatangan = $penerbangan->bandaras->get(1);
+                                    } else {
+                                        $bandaraBerangkat = $penerbangan->bandaras->get(1);
+                                        $bandaraKedatangan = $penerbangan->bandaras->get(0);
+                                    }
+                                @endphp
 
-        <x-penerbangan.card href="{{ route('checkout', ['penerbangan_id' => $penerbangan->id]) }}" :jadwalKedatangan="$penerbangan->jadwal_kedatangan" :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas" :jadwalBerangkat="$penerbangan->jadwal_berangkat"
-            :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :kodeBandaraKedatangan="$bandaraKedatangan->kode"
-            :kotaBandaraKedatangan="$bandaraKedatangan->kota" :kodeBandaraKeberangkatan="$bandaraBerangkat->kode" :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
-    @endforeach
-@endif
+                                <x-penerbangan.card href="{{ route('checkout', ['id' => $penerbangan->id]) }}"
+                                    :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas" :jadwalBerangkat="$penerbangan->jadwal_berangkat" :jadwalKedatangan="$penerbangan->jadwal_kedatangan"
+                                    :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :kodeBandaraKedatangan="$bandaraKedatangan->kode"
+                                    :kotaBandaraKedatangan="$bandaraKedatangan->kota" :kodeBandaraKeberangkatan="$bandaraBerangkat->kode" :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
