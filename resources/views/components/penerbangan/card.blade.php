@@ -7,9 +7,8 @@
     <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
         <div class="flex flex-col items-center justify-center">
             <a href="#" class="shrink-0 md:order-1">
-                <img class="size-16 dark:hidden" src={{ $maskapaiImg }} alt="{{ $maskapaiName }} image"" />
+                <img class="size-16 object-contain" src={{ $maskapaiImg }} alt="{{ $maskapaiName }} image"" />
             </a>
-            {{ $maskapaiName }}
         </div>
         <div class="flex items-center justify-between md:   order-3 md:justify-end">
             <div class="text-end md:order-4 md:w-32">
@@ -24,9 +23,11 @@
             <div class="flex gap-10">
                 <div>
                     <p>Jadwal Keberangkatan :</p>
-                    <p class="text-base font-medium text-gray-900 hover:underline dark:text-white">
-                        {{ Carbon::parse($jadwalBerangkat)->format('d M Y H:i') }}
-                    </p>
+                    <div>
+                        <p class="text-base font-medium text-gray-900 hover:underline dark:text-white">
+                            {{ Carbon::parse($jadwalBerangkat)->format('d M Y H:i') }}
+                        </p>
+                    </div>
                 </div>
 
                 <div>

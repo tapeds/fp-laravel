@@ -22,9 +22,11 @@ class Card extends Component
     public string $arah;
 
     // table bandara
-    public string $bandaraName;
-    public string $bandaraKode;
-    public string $bandaraKota;
+    public string $namaBandaraKedatangan;
+    public string $kotaBandaraKedatangan;
+    public string $namaBandaraKeberangkatan;
+    public string $kotaBandaraKeberangkatan;
+    
 
 
     public function __construct(
@@ -37,10 +39,11 @@ class Card extends Component
         string $maskapaiImg,
 
         string $arah,
-        
-        string $bandaraName,
-        string $bandaraKode,
-        string $bandaraKota
+
+        string $namaBandaraKedatangan,
+        string $kotaBandaraKedatangan,
+        string $namaBandaraKeberangkatan,
+        string $kotaBandaraKeberangkatan
     ) {
         $this->jadwalBerangkat = $jadwalBerangkat;
         $this->jadwalKedatangan = $jadwalKedatangan;
@@ -52,9 +55,10 @@ class Card extends Component
 
         $this->arah = $arah;
 
-        $this->bandaraName = $bandaraName;
-        $this->bandaraKode = $bandaraKode;
-        $this->bandaraKota = $bandaraKota;
+        $this->namaBandaraKedatangan = $namaBandaraKedatangan;
+        $this->kotaBandaraKedatangan = $kotaBandaraKedatangan;
+        $this->namaBandaraKeberangkatan = $namaBandaraKeberangkatan;
+        $this->kotaBandaraKeberangkatan = $kotaBandaraKeberangkatan;
     }
 
     /**
