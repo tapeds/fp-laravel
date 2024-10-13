@@ -11,8 +11,8 @@
                     <div class="ml-10 flex items-baseline space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                        <x-nav-link href="/penerbangan" :active="request()->is('penerbangan')">Penerbangan</x-nav-link>
-                        <x-nav-link href="/pesanan" :active="request()->is('pesanan')">Pesanan</x-nav-link>
+                        <x-nav-link href="/penerbangan" :active="request()->is('penerbangan') || request()->is('checkout/*')">Penerbangan</x-nav-link>
+                        <x-nav-link href="/pesanan" :active="request()->is('pesanan') || request()->is('pesanan/*')">Pesanan</x-nav-link>
                     </div>
                 </div>
             </div>
