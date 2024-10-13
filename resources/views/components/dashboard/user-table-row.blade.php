@@ -33,7 +33,7 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
-            <form action="{{ route('updateUser', $user->id) }}" method="PUT">
+            <form action="{{ route('updateUserAdmin', $user->id) }}" method="PUT">
                 @csrf
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
@@ -51,20 +51,15 @@
                     <div>
                         <label for="nik"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
-                        <input type="text" value="{{ $user->nik }}" name="nik"
-                            id="nik"
+                        <input type="text" value="{{ $user->nik }}" name="nik" id="nik"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
                     <div>
-                        <label for="password"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                        <input type="password" name="password"
-                            id="password"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        {{-- dummy div for handle grid --}}
                     </div>
                     <div class="flex items-center space-x-4">
                         <button type="submit"
-                            class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                            class=" text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                             Update User
                         </button>
                     </div>
@@ -95,10 +90,12 @@
                     class="text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                     No, cancel
                 </button>
-                <form action="{{ route('deleteUser', $user->id) }}" method="DELETE" @csrf <button
-                    data-modal-toggle="deleteModal-{{ $user->id }}" type="submit"
-                    class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-800">
-                    Yes, I'm sure
+                <form action="{{ route('deleteUser', $user->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE') <!-- This specifies that the form should be treated as a DELETE request -->
+                    <button data-modal-toggle="deleteModal-{{ $user->id }}" type="submit"
+                        class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-800">
+                        Yes, I'm sure
                     </button>
                 </form>
             </div>

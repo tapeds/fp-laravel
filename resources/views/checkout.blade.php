@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
+    <section class="bg-white py-8 antialiased dark:bg-gray-900 md:pb-16 md:pt-14">
         <form id="data_form" action="{{ route('checkout.store') }}" method="POST">
             @csrf
             <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12 xl:gap-16">
@@ -34,8 +34,7 @@
                             function updateForm() {
                                 const numEntries = document.getElementById('num_entries').value;
                                 const dataEntries = document.getElementById('data_entries');
-                                const subtotalElement = document.getElementById('subtotal');
-                                // const pricePerEntry = 100; // Define the price for each entry
+                                const totalElement = document.getElementById('total');
 
                                 // Clear previous entries before adding new ones
                                 dataEntries.innerHTML = `
@@ -57,9 +56,9 @@
                                 }
 
 
-                                const subtotal = numEntries * hargaPenerbangan;
-                                subtotalElement.textContent =
-                                    `${subtotal.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace('IDR', '').trim()}`;
+                                const total = numEntries * hargaPenerbangan;
+                                totalElement.textContent =
+                                    `${total.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace('IDR', '').trim()}`;
                             }
                         </script>
 
@@ -107,17 +106,30 @@
                     <div class="flow-root">
                         <div class="-my-3 divide-y divide-gray-200 dark:divide-gray-800">
                             <dl class="flex items-center justify-between gap-4 py-3">
+                                <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Harga per tiket</dt>
+                                <dd id="ticketPrice" class="text-base font-medium text-gray-900 dark:text-white">RP.
+                                </dd>
+                            </dl>
+
+                            <dl class="flex items-center justify-between gap-4 py-3">
                                 <dt class="text-base font-bold text-gray-900 dark:text-white">Total Harga</dt>
-                                <dd id="subtotal" class="text-base font-bold text-gray-900 dark:text-white">RP. 0</dd>
+                                <dd id="total" class="text-base font-bold text-gray-900 dark:text-white">RP. 0</dd>
                             </dl>
                         </div>
                     </div>
 
                     <div class="space-y-3">
                         <button type="submit"
-                            class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed
-                            to Payment</button>
+                            class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                            Beli Tiket</button>
                     </div>
+
+                    <script>
+                        const hargaTiket = {{ $harga }};
+                        const ticketPrice = document.getElementById('ticketPrice');
+                        ticketPrice.innerHTML =
+                            `${hargaTiket.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).replace('IDR', '').trim()}`;
+                    </script>
                 </div>
             </div>
         </form>

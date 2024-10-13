@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PenerbanganController;
 use App\Http\Controllers\PesananController;
@@ -34,24 +33,6 @@ Route::get('/pesanan', [PesananController::class, 'pesanan'])->middleware(['auth
 
 Route::get('/pesanan/{id}', [PesananController::class, 'detail'])->middleware(['auth', 'verified'])->name('pesanan');
 
-Route::get('/admin', [AdminController::class, 'home'])->middleware(['admin'])->name('home');
-
-Route::get('/admin/user', [AdminController::class, 'user'])->middleware(['admin'])->name('user');
-
-Route::get('/admin/tiket', [AdminController::class, 'tiket'])->middleware(['admin'])->name('tiket');
-
-Route::get('/admin/penerbangan', [AdminController::class, 'penerbangan'])->middleware(['admin'])->name('penerbangan');
-
-Route::post('/admin/penerbangan/add', [AdminController::class, 'addPenerbanganAdmin'])->middleware(['admin'])->name('addPenerbanganAdmin');
-
-Route::get('/admin/penerbangan/delete/{id}', [AdminController::class, 'deletePenerbangan'])->middleware(['admin'])->name('deletePenerbangan');
-
-Route::get('/admin/user/{id}', [AdminController::class, 'deleteUser'])->middleware(['admin'])->name('deleteUser');
-
-Route::get('/admin/penerbangan/edit/{id}', [AdminController::class, 'updatePenerbangan'])->middleware(['admin'])->name('updatePenerbangan');
-
-Route::get('/admin/user/edit/{id}', [AdminController::class, 'updateUserAdmin'])->middleware(['admin'])->name('updateUserAdmin');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -59,3 +40,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+require __DIR__ . '/admin.php';

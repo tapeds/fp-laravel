@@ -1,18 +1,21 @@
 <x-app-layout>
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-20 lg:px-12">
-            <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+            <h1
+                class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
                 Terbang Lebih Mudah, Tiket Lebih Murah!
             </h1>
             <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-                Temukan penerbangan impian Anda dengan harga terbaik! Kami menyediakan berbagai pilihan maskapai dan rute penerbangan di seluruh dunia.
+                Temukan penerbangan impian Anda dengan harga terbaik! Kami menyediakan berbagai pilihan maskapai dan
+                rute penerbangan di seluruh dunia.
             </p>
             <div class="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                 <form id="searchForm" class="w-full flex md:flex-row flex-col gap-4 mx-auto">
                     @csrf
 
                     <div class="flex flex-col gap-0.5 w-full items-start">
-                        <label for="berangkat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Asal</label>
+                        <label for="berangkat"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Asal</label>
                         <select id="berangkat"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected disabled>Pilih Asal</option>
@@ -23,7 +26,8 @@
                         </select>
                     </div>
                     <div class="flex flex-col gap-0.5 w-full items-start">
-                        <label for="kedatangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tujuan</label>
+                        <label for="kedatangan"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tujuan</label>
                         <select id="kedatangan"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected disabled>Pilih Tujuan</option>
@@ -34,11 +38,15 @@
                         </select>
                     </div>
                     <div class="flex flex-col gap-0.5 w-full items-start">
-                        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Perjalanan</label>
+                        <label for="countries"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
+                            Perjalanan</label>
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                 </svg>
                             </div>
                             <input datepicker id="tanggal" type="text"
@@ -60,14 +68,20 @@
             <div class="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36">
                 <span class="font-semibold text-gray-400 uppercase">SUPPORTED BY</span>
                 <div class="flex flex-wrap justify-center items-center mt-8 text-gray-500 sm:justify-around">
-                    <a href="#" class="flex items-center justify-center mr-5 mb-5 w-32 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
-                        <img src="https://github.com/user-attachments/assets/7b857be4-74e6-4f53-b823-376d11914939" alt="ITS" class="w-20">
+                    <a href="#"
+                        class="flex items-center justify-center mr-5 mb-5 w-32 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
+                        <img src="https://github.com/user-attachments/assets/7b857be4-74e6-4f53-b823-376d11914939"
+                            alt="ITS" class="w-20">
                     </a>
-                    <a href="#" class="flex items-center justify-center mr-5 mb-5 w-32 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
-                        <img src="https://github.com/user-attachments/assets/6008a6b3-6398-4548-8925-f95bf1eab913" alt="ITS" class="w-20">
+                    <a href="#"
+                        class="flex items-center justify-center mr-5 mb-5 w-32 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
+                        <img src="https://github.com/user-attachments/assets/6008a6b3-6398-4548-8925-f95bf1eab913"
+                            alt="ITS" class="w-20">
                     </a>
-                    <a href="#" class="flex items-center justify-center mr-5 mb-5 w-32 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
-                        <img src="https://github.com/user-attachments/assets/642155bf-1040-438b-9089-3cda2829a016" alt="ITS" class="w-28">
+                    <a href="#"
+                        class="flex items-center justify-center mr-5 mb-5 w-32 lg:mb-0 hover:text-gray-800 dark:hover:text-gray-400">
+                        <img src="https://github.com/user-attachments/assets/642155bf-1040-438b-9089-3cda2829a016"
+                            alt="ITS" class="w-28">
                     </a>
                 </div>
             </div>
@@ -101,24 +115,24 @@
             });
         });
 
-    document.getElementById('searchForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-    const asal = document.getElementById('berangkat').value;
-    const tujuan = document.getElementById('kedatangan').value;
-    const tanggalPerjalanan = document.getElementById('tanggal').value;
+            const asal = document.getElementById('berangkat').value;
+            const tujuan = document.getElementById('kedatangan').value;
+            const tanggalPerjalanan = document.getElementById('tanggal').value;
 
-    if (asal && tujuan && tanggalPerjalanan) {
-        const queryParams = new URLSearchParams({
-            asal: asal,
-            tujuan: tujuan,
-            tanggal_perjalanan: tanggalPerjalanan
+            if (asal && tujuan && tanggalPerjalanan) {
+                const queryParams = new URLSearchParams({
+                    asal: asal,
+                    tujuan: tujuan,
+                    tanggal_perjalanan: tanggalPerjalanan
+                });
+
+                window.location.href = `/penerbangan?${queryParams.toString()}`;
+            } else {
+                alert("Please fill all fields before submitting the form.");
+            }
         });
-
-        window.location.href = `/penerbangan?${queryParams.toString()}`;
-    } else {
-        alert("Please fill all fields before submitting the form.");
-    }
-});
     </script>
 </x-app-layout>

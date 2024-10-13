@@ -56,6 +56,7 @@
                         </div>
                     </div>
                 </form>
+
                 <div class="mx-auto w-full flex-none lg:max-w-xl xl:max-w-3xl">
                     <div class="space-y-6">
                         @if ($daftar_penerbangan->isEmpty())
@@ -94,9 +95,10 @@
                                         :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :kodeBandaraKedatangan="$bandaraKedatangan->kode"
                                         :kotaBandaraKedatangan="$bandaraKedatangan->kota" :kodeBandaraKeberangkatan="$bandaraBerangkat->kode" :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
                                 @else
-                                    <x-penerbangan.card-disabled :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas" :jadwalBerangkat="$penerbangan->jadwal_berangkat" :jadwalKedatangan="$penerbangan->jadwal_kedatangan"
-                                        :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img" :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :kodeBandaraKedatangan="$bandaraKedatangan->kode"
-                                        :kotaBandaraKedatangan="$bandaraKedatangan->kota" :kodeBandaraKeberangkatan="$bandaraBerangkat->kode" :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
+                                    <x-penerbangan.card-disabled :harga="$penerbangan->harga" :kapasitas="$penerbangan->kapasitas"
+                                        :jadwalBerangkat="$penerbangan->jadwal_berangkat" :jadwalKedatangan="$penerbangan->jadwal_kedatangan" :maskapaiName="$penerbangan->maskapai->name" :maskapaiImg="$penerbangan->maskapai->img"
+                                        :arah="$penerbangan->bandaraPenerbangans->first()->tx_arah" :kodeBandaraKedatangan="$bandaraKedatangan->kode" :kotaBandaraKedatangan="$bandaraKedatangan->kota" :kodeBandaraKeberangkatan="$bandaraBerangkat->kode"
+                                        :kotaBandaraKeberangkatan="$bandaraBerangkat->kota" />
                                 @endif
                             @endforeach
                         @endif

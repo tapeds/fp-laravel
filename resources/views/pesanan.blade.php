@@ -8,7 +8,7 @@
                     <div class="space-y-6">
                         @if ($daftar_penerbangan->isEmpty())
                             <div class="flex items-center justify-center max-lg:py-20">
-                                Tidak ada penerbangan yang tersedia.
+                                Belum memiliki pesanan tiket.
                             </div>
                         @else
                             @foreach ($daftar_penerbangan as $penerbangan)

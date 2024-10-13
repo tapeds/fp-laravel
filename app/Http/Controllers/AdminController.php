@@ -93,7 +93,7 @@ class AdminController extends Controller
         return redirect()->to('/admin/penerbangan');
     }
 
-    public function updateUser(Request $request, $id)
+    public function updateUserAdmin(Request $request, $id)
     {
         $request->validate([
             'nama' => 'string|min:1',

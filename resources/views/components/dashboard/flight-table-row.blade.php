@@ -106,12 +106,15 @@
                     class="text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-600">
                     No, cancel
                 </button>
-                <form action="{{ route('deletePenerbangan', $flight->id) }}" method="DELETE" @csrf <button
-                    data-modal-toggle="deleteModal-{{ $flight->id }}" type="submit"
-                    class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-800">
-                    Yes, I'm sure
+                <form action="{{ route('deletePenerbangan', $flight->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE') <!-- This specifies that the form should be treated as a DELETE request -->
+                    <button data-modal-toggle="deleteModal-{{ $flight->id }}" type="submit"
+                        class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-800">
+                        Yes, I'm sure
                     </button>
                 </form>
+
             </div>
         </div>
     </div>
