@@ -41,7 +41,7 @@
 
         <ul class='mt-2'>
             @foreach ($detail->passengers as $passenger)
-                <li class='text-gray-500'>{{ $passenger->name }} - NIK: {{ $passenger->nik }}</li>
+                <li class='text-gray-500'>{{ $passenger->name }} - {{ $passenger->nik }}</li>
             @endforeach
         </ul>
           <p class='text-2xl text-gray-700 font-medium mt-5'>
